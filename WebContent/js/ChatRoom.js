@@ -22,7 +22,7 @@
 			var param = "task=send&msg=" +user+" : " + msg;
 			ajaxRequest(param); // ajax 請求
 			document.getElementById("text").value = ""; // 清空文字欄位					
-		}else {location.href="HomePageVersion3.jsp";}
+		}else {location.href="Login2.jsp";}
 	}
 	// 	 定時查詢用這個
 	function queryMessage() {
@@ -31,7 +31,7 @@
 	}
 
 	function ajaxRequest(param) {
-		var url = "ChatRoomServlet?timestamp=" + new Date().getTime();
+		var url = "ChatRoomServlet";
 		createXMLHttpRequest();
 		xmlHttp.onreadystatechange = refreshMessage;
 		xmlHttp.open("POST", url, true);
