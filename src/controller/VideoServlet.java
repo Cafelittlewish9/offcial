@@ -159,8 +159,8 @@ public class VideoServlet extends HttpServlet {
 				
 			}
 		}else if(prodaction!=null && prodaction.equals("Update")) {
-			System.out.println("Update");
-			System.out.println(bean.getVideoId());
+//			System.out.println("Update");
+//			System.out.println(bean.getVideoId());
 			boolean result = vs.updateVideo(bean.getVideoId(),bean.getVideoTitle(),bean.getVideoDescription());
 			PrintWriter out = response.getWriter();
 			if(result==false) {

@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.service.BlackService;
 import model.service.FollowService;
 import model.service.VideoService;
+import model.vo.BlackVO;
 import model.vo.FollowVO;
 import model.vo.MemberVO;
 import model.vo.VideoVO;
@@ -20,11 +22,13 @@ import model.vo.VideoVO;
 public class PersonalPage extends HttpServlet {
 	private VideoService vService;
 	private FollowService fService;
+	private BlackService bService;
 
 	@Override
 	public void init() throws ServletException {
 		this.vService = new VideoService();
 		this.fService = new FollowService();
+		this.bService=new BlackService();
 	}
 
 	@Override
@@ -36,10 +40,15 @@ public class PersonalPage extends HttpServlet {
 //		System.out.println(memberId);
 		Collection<VideoVO> vList = vService.searchMemberId(memberId);
 		Collection<FollowVO> fList = fService.followList(memberId);
+		Collection<BlackVO> bList=bService.searchBlackAccount(memberId);
+		
 		request.setAttribute("vList", vList);
 		request.setAttribute("fList", fList);
-//		session.setAttribute("vList", vList);//我覺得這種作法不好，但只用request就是只有在personpage才能拿到這組物件
-//		session.setAttribute("fList", fList);
+		request.setAttribute("bList",bList);
+		
+		
+		
+		
 		request.getRequestDispatcher("PersonalPage.jsp").forward(request, response);
 	}
 

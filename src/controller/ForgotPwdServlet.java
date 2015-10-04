@@ -22,7 +22,7 @@ public class ForgotPwdServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String userNameOrEmail = req.getParameter("userNameOrEmail");
+		String userNameOrEmail = req.getParameter("useraccount");
 		UserDao usesrDao = UserDAOjdbc.getInstance();
 		User user = usesrDao.findUserByNameOrEmail(userNameOrEmail);
 		if(user ==null){
@@ -35,14 +35,13 @@ public class ForgotPwdServlet extends HttpServlet{
 		
 		req.setAttribute("sendMailMsg","您的申請已提交成功,請查看您的"+user.getMemberEmail()+"郵箱");
 		
-		req.getRequestDispatcher("/test.jsp").forward(req, resp);
+		req.getRequestDispatcher("HomePageVersion3.jsp").forward(req, resp);
 		
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+		this.doGet(req, resp);
 	}
 	
 

@@ -95,15 +95,15 @@ public class VideoCommentServlet extends HttpServlet {
 		
 		
 		String videoId = request.getParameter("videoId");
-		System.out.println("show me : "+videoId);
+//		System.out.println("show me : "+videoId);
 //		String memberName = request.getParameter("memberName");
 		String commentId = request.getParameter("commentId");
 		String commentContent = request.getParameter("commentContent");
-		System.out.println("commentContent : "+commentContent);
+//		System.out.println("commentContent : "+commentContent);
 		String commentTime = request.getParameter("commentTime");
 		String sendComment = request.getParameter("sendComment");
 		String memberId = request.getParameter("memberId");
-		System.out.println("MemberId : "+memberId);
+//		System.out.println("MemberId : "+memberId);
 		String memberAccount = request.getParameter("memberAccount");
 		String memberPassword = request.getParameter("memberPassword");
 		MemberService memberService = new MemberService();
@@ -190,13 +190,13 @@ public class VideoCommentServlet extends HttpServlet {
 			request.getRequestDispatcher("PlayVideo.jsp").forward(request, response);
 			
 		}else if(sendComment != null && sendComment.equals("insert")){
-			System.out.println("sendComment insert : "+sendComment);
+//			System.out.println("sendComment insert : "+sendComment);
 			boolean result = service.insertVideoComments(convertMemberId, convertVideoId, commentContent);//commentContent不知道有沒有抓到東西:(
 			if(result){
-				System.out.println("insert : "+result);
+//				System.out.println("insert : "+result);
 				request.setAttribute("insert", true);
 			}else{
-				System.out.println("NONinsert : "+result);
+//				System.out.println("NONinsert : "+result);
 				request.setAttribute("insert", false);
 			}
 			request.getRequestDispatcher("PlayVideo.jsp").forward(request, response);
@@ -218,7 +218,7 @@ public class VideoCommentServlet extends HttpServlet {
 			request.getRequestDispatcher("PlayVideo.jsp").forward(request, response);
 		}else{
 			Collection<VideoCommentsVO> result = service.videoCommentsList(convertVideoId);
-			System.out.println("showComments : "+result);
+//			System.out.println("showComments : "+result);
 			response.setContentType("text/html; charset=utf-8");
 			String comments = JSONValue.toJSONString(this.convertToJson(result));
 			PrintWriter out = response.getWriter();

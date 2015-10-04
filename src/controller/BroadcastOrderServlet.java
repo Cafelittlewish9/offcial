@@ -34,8 +34,6 @@ public class BroadcastOrderServlet extends HttpServlet {
         super();
     }
     
-    
-    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//接收資料
 		Date date = new Date();
@@ -80,7 +78,6 @@ public class BroadcastOrderServlet extends HttpServlet {
 			}
 		}	
 		
-		
 		//呼叫Model
 				BroadcastOrderVO bean = new BroadcastOrderVO();
 				bean.setMemberAccount(memberAccount);
@@ -90,7 +87,6 @@ public class BroadcastOrderServlet extends HttpServlet {
 				
 		//根據Model執行結果導向View
 				BroadcastOrderService bs = new BroadcastOrderService();
-				
 				
 				if(prodaction!=null && prodaction.equals("Select")) {
 					Collection<BroadcastOrderVO> result = bs.broadcastOrder();
@@ -160,10 +156,10 @@ public class BroadcastOrderServlet extends HttpServlet {
 					
 					
 				}else  {
-					System.out.println(prodaction);
+//					System.out.println(prodaction);
 					//沒有按時直接送這段
 					Collection<BroadcastOrderVO> res = bs.broadcastOrder();
-					System.out.println("123:"+res);
+//					System.out.println("123:"+res);
 					JSONArray list = new JSONArray();
 					for (BroadcastOrderVO row : res) {
 						Map map =new HashMap();

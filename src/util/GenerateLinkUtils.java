@@ -14,7 +14,7 @@ public class GenerateLinkUtils {
 	 private static final String CHECK_CODE = "checkCode"; 
 
 	public static String generateResetPwdLink(User user){
-		return "http://localhost:8080/AccountActivate/resetPasswordUI?memberAccount="   
+		return "http://localhost:8080/iTV1002/resetPasswordUI?memberAccount="   
                 + user.getMemberAccount() + "&" + CHECK_CODE +   "=" + generateCheckcode(user);  
 	}
 

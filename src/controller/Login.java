@@ -34,10 +34,10 @@ public class Login extends HttpServlet {
 		String username = request.getParameter("memberAccount");
 		String password = request.getParameter("memberPassword");
 		String operation = request.getParameter("operation");
-		if (username == null ||username=="" ||username.trim().length() == 0) {
+		if (username == null ||username.trim().length() == 0) {
 			errors.add("帳號欄必須輸入");
 		}
-		if (password == null || password==""||password.trim().length() == 0) {
+		if (password == null ||password.trim().length() == 0) {
 			errors.add("密碼欄必須輸入");
 		}
 
@@ -47,7 +47,7 @@ public class Login extends HttpServlet {
 		}
 
 		MemberVO bean = ms.login1(username, password);
-		if (operation != null && operation!="" && operation.equals("登入") && bean != null) {
+		if (operation != null && operation.trim().length()!=0 && operation.equals("登入") && bean != null) {
 			HttpSession session = request.getSession();
 			String ip = request.getRemoteAddr();
 			ls.login(username, ip);

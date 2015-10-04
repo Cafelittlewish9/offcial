@@ -139,14 +139,20 @@ public class FollowServlet extends HttpServlet {
 				request.setAttribute("insert", 0);
 			}
 			request.getRequestDispatcher("PlayVideo.jsp").forward(request, response);
-		}else if (sendMemberFollow !=null && sendMemberFollow.equals("delete")){
-			boolean result = service.unfollow(convertFollowId, memberId);
-			if(result){
-				request.setAttribute("delete", 1);
-			}else if(!result){
-				request.setAttribute("delete", 0);
+		}else if (sendMemberFollow !=null && sendMemberFollow.equals("取消追蹤")){
+			FollowVO checkFollow = service.checkFollow(memberId, convertFollowId);
+			if(checkFollow!=null){
+				
+				boolean result = service.unfollow(convertFollowId, memberId);
+				
+				if(result){
+					request.setAttribute("delete", 1);
+				}else if(!result){
+					request.setAttribute("delete", 0);
+				}
+				
 			}
-			request.getRequestDispatcher("PlayVideo.jsp").forward(request, response);
+			request.getRequestDispatcher("PersonalPage.jsp").forward(request, response);
 		}else{
 			Collection<FollowVO> showFollowList = service.followList(memberId);
 			response.setContentType("text/html; charset=utf-8");

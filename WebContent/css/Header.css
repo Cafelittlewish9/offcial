@@ -89,7 +89,7 @@
 		    border-radius: 50%;
 		    max-width: 100%;
 		}
-		#PersonalPage,#uploadfile,#createlive,#cancellive,#follow,#setting{
+		#PersonalPage,#uploadfile,#createlive,#cancellive,#follow,#black,#setting{
 			background:transparent;
 			color:black; 
 			border:0px solid #E0E0E0;

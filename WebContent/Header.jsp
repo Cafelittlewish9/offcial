@@ -55,6 +55,8 @@ $(function(){
 		<jsp:include page="/CreateLive.jsp" />
 		
 		<jsp:include page="/Follow.jsp" />
+		
+		<jsp:include page="/Black.jsp"/>
 		   	
 		<jsp:include page="/Setting.jsp" />
 		
@@ -101,7 +103,7 @@ $(function(){
 					            </a>
 								<ul class="dropdown-menu" role="menu">
 									<li>
-<!-- 									<a href="PersonalPage" style="width: 169px;height: 34px;text-align: center;line-height: 34px;"></a> -->										
+<!-- 									<a href="PersonalPage.jsp" style="width: 169px;height: 34px;text-align: center;line-height: 34px;">個人頁面</a>										 -->
 									<button type="button" class="btn btn-primary btn-me" id="PersonalPage" data-toggle="modal" data-target="#PersonalPage" style="display: block;">
 									<a href="PersonalPage" style="text-decoration: none">
 									個人頁面</a>
@@ -124,8 +126,14 @@ $(function(){
 									</button>
 									</li>
 									<li>
+<!-- 									<a href="Followdelete" style="width: 169px;height: 34px;text-align: center;line-height: 34px;">追蹤名單</a> -->
 									<button type="button" class="btn btn-primary btn-me" id="follow" data-toggle="modal" data-target="#followModal">
 									  	追蹤名單
+									</button>
+									</li>
+									<li>
+									<button type="button" class="btn btn-primary btn-me" id="black" data-toggle="modal" data-target="#blackModal">
+									  	黑名單
 									</button>
 									</li>
 									<li>

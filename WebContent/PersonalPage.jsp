@@ -98,7 +98,7 @@
 		            
 		              <div class="placeholder-for-chat no-chat">
 		              
-		                <div class="friendslist"><span>FollowList</span>
+		                <div class="friendslist"><span>您正追蹤中的會員</span>
 		                <c:forEach var="follow" items="${fList}">
 			                <div class="friends">
 				                <img src="${follow.member.memberName}" />

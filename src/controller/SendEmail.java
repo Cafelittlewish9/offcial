@@ -15,7 +15,7 @@ import javax.mail.internet.MimeMultipart;
 
 
 public class SendEmail {
-	 public static boolean sendemail(String memberId,String password1 ,String email) {
+	 public static boolean sendemail(String memberAccount,String password1 ,String email) {
 	  String host = "smtp.gmail.com";
 	  int port = 587;
 	  final String username = "zoo123131@gmail.com";
@@ -41,9 +41,9 @@ public class SendEmail {
 		  Multipart mp = new MimeMultipart();
 		  MimeBodyPart part1 = new MimeBodyPart();
 		  StringBuilder sb = new StringBuilder();
-		  sb.append("<h2>您好,這是您的帳號和密碼<h2>");
+		  sb.append("<h2>您好這是您的帳號和密碼<h2>");
 		  sb.append("<br>使用者帳號：");
-		  sb.append(memberId);
+		  sb.append(memberAccount);
 		  sb.append("<br>使用者密碼：");
 		  sb.append(password1);				 
 		  part1.setText(sb.toString());
@@ -52,7 +52,7 @@ public class SendEmail {
 		  message.setContent(mp);
 		  Transport.send(message);
 	   
-		  System.out.println("寄送email結束.");
+//		  System.out.println("寄送email結束.");
 		  return true;
 	  	} catch (Exception e) {
 	  		return false;

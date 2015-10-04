@@ -60,7 +60,7 @@ width: 450px; margin:0px auto;padding:5px
 				<fieldset style="text-align:center">
 		
 				<div id="l_input1-2" class="input-group">
-					  <span  class="input-group-addon" id="basic-addon1">您已成功申請，請致您的信箱查看</span>
+					  <span  class="input-group-addon" id="basic-addon1">您已成功申請，請到您的信箱查看</span>
 					  
 				</div>
 						

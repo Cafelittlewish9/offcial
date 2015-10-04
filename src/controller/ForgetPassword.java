@@ -24,7 +24,7 @@ public class ForgetPassword extends HttpServlet {
     }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    String memberAccount = request.getParameter("memberAccount");
-	    String email = request.getParameter("email");
+	    String email = request.getParameter("memberEmail");
 	    request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -39,13 +39,14 @@ public class ForgetPassword extends HttpServlet {
 	    	    
 	    if(!errorMessage.isEmpty()){
 			request.setAttribute("ErrorMsg", errorMessage);
-			RequestDispatcher rd = request.getRequestDispatcher("/GetPassword.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("GetPassword.jsp");
+			rd.forward(request,response);			
+		}else{
+			RequestDispatcher rd = request.getRequestDispatcher("GetPassword1.jsp");	
 			rd.forward(request,response);
-			
 		}
 	    
-	    RequestDispatcher rd = request.getRequestDispatcher("/GetPassword1.jsp");	
-		rd.forward(request,response);
+	    
 	    
 	}
 	

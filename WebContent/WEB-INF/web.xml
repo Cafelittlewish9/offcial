@@ -9,6 +9,22 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <error-page>
+        <error-code>404</error-code>
+        <location>/page404.html</location>
+    </error-page>
+      <error-page>
+        <error-code>500</error-code>
+        <location>/page404.html</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/page404.html</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/page404.html</location>
+    </error-page>
   
 <!--    <filter> -->
 <!--     <display-name>LoginFilter</display-name> -->

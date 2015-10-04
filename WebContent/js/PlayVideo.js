@@ -80,7 +80,12 @@ $(function(){
 			dataType:"json",
 			success:function(data){
 				
-				$('#sendReportContent').click(function(){
+				$('#reportVideo').click(function(){
+					if('${user.memberId}'==""){
+						  $('#Login').modal('show');
+						  return;
+					  }else{
+						  
 			 		  $.ajax({
 			 			  url:'ReportVideoServlet',
 			 			  type:'get',
@@ -109,6 +114,7 @@ $(function(){
 			           		     	}
 			 			 	}  	
 			 		  	})
+					  }
 			 	})
 				
 			 	

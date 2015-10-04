@@ -30,10 +30,10 @@ public class VideoClass extends HttpServlet {
 //		System.out.println(videoClassName);
 		Collection<VideoVO> list = null;
 		if (videoClassName != null && videoClassName.trim().length() != 0) {
-			System.out.println("videoClassName!=null");
+//			System.out.println("videoClassName!=null");
 			list = service.videoClassList(videoClassName);
 		} else {
-			System.out.println("videoClassName==null");
+//			System.out.println("videoClassName==null");
 			list = service.hotVideo();
 		}
 		resp.setCharacterEncoding("UTF-8");
