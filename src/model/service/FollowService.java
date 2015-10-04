@@ -1,9 +1,11 @@
 package model.service;
 
 import java.util.Collection;
+
 import model.dao.FollowDAO;
 import model.dao.jdbc.FollowDAOjdbc;
 import model.vo.FollowVO;
+import model.vo.ShowVO;
 
 public class FollowService {
 	private FollowDAO dao;
@@ -30,5 +32,10 @@ public class FollowService {
 	
 	public Collection<FollowVO> followList(int memberId) {
 		return dao.selectByMemberId(memberId);
+	}
+	
+	public FollowVO checkFollow(int memberId,int followId) {
+		FollowVO list = dao.selectByMemberIdAndFollowId(memberId, followId);
+		return list;
 	}
 }

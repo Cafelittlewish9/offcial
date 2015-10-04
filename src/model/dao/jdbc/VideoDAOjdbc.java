@@ -27,14 +27,13 @@ public class VideoDAOjdbc implements VideoDAO {
 	public VideoDAOjdbc() {
 		try {
 			InitialContext context = new InitialContext();
-//			this.datasource = (DataSource) context.lookup("java:comp/env/jdbc/DB");
-			this.datasource = (DataSource) context.lookup(GC.DATASOURCE);
+			this.datasource = (DataSource) context.lookup("java:comp/env/jdbc/iTV");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
 	}
 
-	private static final String SELECT_BY_VIDEOTITLE = "SELECT v.*,m.memberAccount FROM video v Join member m ON v.memberId = m.memberId WHERE videoTitle LIKE ?";
+	private static final String SELECT_BY_VIDEOTITLE = "SELECT v.*,m.memberAccount, m.memberName FROM video v Join member m ON v.memberId = m.memberId WHERE videoTitle LIKE ?";
 
 	@Override
 	public List<VideoVO> selectByVideoTitle(String videoTitle) {
@@ -63,6 +62,7 @@ public class VideoDAOjdbc implements VideoDAO {
 				result.setVideoDescriptionModifyTime(
 						ConvertType.convertToLocalTime(rset.getTimestamp("videoDescriptionModifyTime")));
 				bean.setMemberAccount(rset.getString("memberAccount"));
+				bean.setMemberName(rset.getString("memberName"));
 				result.setMember(bean);
 				list.add(result);
 			}
@@ -72,7 +72,7 @@ public class VideoDAOjdbc implements VideoDAO {
 		return list;
 	}
 
-	private static final String SELECT_BY_VIDEONAME = "SELECT v.*,m.memberAccount FROM video v Join member m ON v.memberId = m.memberId WHERE videoName = ?";
+	private static final String SELECT_BY_VIDEONAME = "SELECT v.*,m.memberAccount, m.memberName FROM video v Join member m ON v.memberId = m.memberId WHERE videoName = ?";
 
 	@Override
 	public List<VideoVO> selectByVideoName(String videoName) {
@@ -101,6 +101,7 @@ public class VideoDAOjdbc implements VideoDAO {
 				result.setVideoDescriptionModifyTime(
 						ConvertType.convertToLocalTime(rset.getTimestamp("videoDescriptionModifyTime")));
 				bean.setMemberAccount(rset.getString("memberAccount"));
+				bean.setMemberName(rset.getString("memberName"));
 				result.setMember(bean);
 				list.add(result);
 			}
@@ -110,7 +111,7 @@ public class VideoDAOjdbc implements VideoDAO {
 		return list;
 	}
 	
-	private static final String SELECT_BY_VIDEOCLASSNAME = "SELECT v.*,m.memberAccount FROM video v Join member m ON v.memberId = m.memberId WHERE videoClassName = ?";
+	private static final String SELECT_BY_VIDEOCLASSNAME = "SELECT TOP 10 v.*,m.memberAccount, m.memberName FROM video v Join member m ON v.memberId = m.memberId WHERE videoClassName = ?";
 
 	@Override
 	public List<VideoVO> selectByVideoClassName(String videoClassName) {
@@ -139,6 +140,7 @@ public class VideoDAOjdbc implements VideoDAO {
 				result.setVideoDescriptionModifyTime(
 						ConvertType.convertToLocalTime(rset.getTimestamp("videoDescriptionModifyTime")));
 				bean.setMemberAccount(rset.getString("memberAccount"));
+				bean.setMemberName(rset.getString("memberName"));
 				result.setMember(bean);
 				list.add(result);
 			}
@@ -148,7 +150,7 @@ public class VideoDAOjdbc implements VideoDAO {
 		return list;
 	}
 	
-	private static final String SELECT_BY_MEMBERID = "SELECT v.*,m.memberAccount FROM video v Join member m ON v.memberId = m.memberId WHERE m.memberId=?";
+	private static final String SELECT_BY_MEMBERID = "SELECT v.*,m.memberAccount, m.memberName FROM video v Join member m ON v.memberId = m.memberId WHERE m.memberId=?";
 
 	@Override
 	public List<VideoVO> selectByMemberId(int memberId) {
@@ -177,6 +179,7 @@ public class VideoDAOjdbc implements VideoDAO {
 				result.setVideoDescriptionModifyTime(
 						ConvertType.convertToLocalTime(rset.getTimestamp("videoDescriptionModifyTime")));
 				bean.setMemberAccount(rset.getString("memberAccount"));
+				bean.setMemberName(rset.getString("memberName"));
 				result.setMember(bean);
 				list.add(result);
 			}
@@ -186,7 +189,7 @@ public class VideoDAOjdbc implements VideoDAO {
 		return list;
 	}
 
-	private static final String SELECT_ALL = "SELECT v.*,m.memberAccount FROM video v Join member m ON v.memberId = m.memberId ORDER BY videoWatchTimes DESC";
+	private static final String SELECT_ALL = "SELECT v.*,m.memberAccount, m.memberName FROM video v Join member m ON v.memberId = m.memberId ORDER BY videoWatchTimes DESC";
 
 	@Override
 	public List<VideoVO> selectAll() {
@@ -213,6 +216,7 @@ public class VideoDAOjdbc implements VideoDAO {
 						ConvertType.convertToLocalTime(rset.getTimestamp("videoDescriptionModifyTime")));
 				MemberVO member = new MemberVO();
 				member.setMemberAccount(rset.getString("memberAccount"));
+				member.setMemberName(rset.getString("memberName"));
 				bean.setMember(member);
 				list.add(bean);
 			}

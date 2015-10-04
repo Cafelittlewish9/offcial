@@ -69,7 +69,6 @@ public class ReportVideoServlet extends HttpServlet {
 		String reportTime = request.getParameter("reportTime");
 		
 		String reportReason = request.getParameter("reportReason");
-		System.out.println("reportReason : "+reportReason);
 		
 		String sendReportVideoMessage = request.getParameter("sendReportVideoMessage");
 
@@ -151,18 +150,15 @@ public class ReportVideoServlet extends HttpServlet {
 			request.setAttribute("showReportedVideos", showReportedVideos);
 			request.getRequestDispatcher("//").forward(request, response);
 			
-		}else if (sendReportVideoMessage != null && sendReportVideoMessage.equals("insert")) {
+		}else 
+		if (sendReportVideoMessage != null && sendReportVideoMessage.equals("insert")) {
+		
 			
-			System.out.println("sendReportVideoMessage : "+sendReportVideoMessage);
+			boolean result = service.addReportVideo(convertReportedVideoId, reportReason);
 			
-			boolean result = service.addReportVideo(convertReportedVideoId, convertreportTime, reportReason);
+			PrintWriter out = response.getWriter();
+			out.println(result);
 			
-			if(result){
-				request.setAttribute("insert", 1);
-			}else{
-				request.setAttribute("insert", 0);
-			}
-			request.getRequestDispatcher("PlayVideo.jsp").forward(request, response);
 		} else if (sendReportVideoMessage != null && sendReportVideoMessage.equals("delete")) {
 			boolean result = service.deleteVideo(bean);
 			if (!result) {

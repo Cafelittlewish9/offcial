@@ -110,6 +110,28 @@ public class FollowServlet extends HttpServlet {
 			
 			request.setAttribute("showFollowList", showFollowList);
 			request.getRequestDispatcher("PlayVideo.jsp").forward(request, response);
+			
+		}else if(sendMemberFollow !=null && sendMemberFollow.equals("check")){
+			System.out.println("sendMemberFollow : "+sendMemberFollow);
+			FollowVO checkFollow = service.checkFollow(memberId, convertFollowId);
+			
+			PrintWriter out = response.getWriter();
+			if(checkFollow!=null){
+				JSONArray one = new JSONArray();
+				
+					Map map =new HashMap();
+					map.put("memberId",checkFollow.getMemberId());
+					map.put("followId",checkFollow.getFollowId());
+					
+				//轉換contentType必要
+				response.setContentType("text/html; charset=utf-8");
+				String json = JSONValue.toJSONString(one);
+				
+				out.println(json);
+			}else{
+				out.println(checkFollow);
+			}
+			
 		}else if(sendMemberFollow !=null && sendMemberFollow.equals("insert")){
 			System.out.println("sendMemberFollow insert : "+sendMemberFollow);
 			boolean result = service.follow(memberId, convertFollowId);

@@ -62,6 +62,7 @@ public class VideoServlet extends HttpServlet {
 			map.put("videoDescription",row.getVideoDescription());
 			map.put("videoDescriptionModifyTime", row.getVideoDescriptionModifyTime()+"");
 			map.put("memberAccount", row.getMember().getMemberAccount());
+			map.put("memberName", row.getMember().getMemberName());
 			list.add(map);
 		}
     	return list;
@@ -92,6 +93,7 @@ public class VideoServlet extends HttpServlet {
 				String videoDescription = request.getParameter("videoDescription");
 				java.sql.Timestamp videoDescriptionModifyTime = new java.sql.Timestamp(date.getTime());
 				String prodaction = request.getParameter("prodaction");
+				
 		
 		//驗證資料
 		Map<String, String> errors = new HashMap<String, String>();
@@ -157,8 +159,8 @@ public class VideoServlet extends HttpServlet {
 				
 			}
 		}else if(prodaction!=null && prodaction.equals("Update")) {
-//			System.out.println("Update");
-//			System.out.println(bean.getVideoId());
+			System.out.println("Update");
+			System.out.println(bean.getVideoId());
 			boolean result = vs.updateVideo(bean.getVideoId(),bean.getVideoTitle(),bean.getVideoDescription());
 			PrintWriter out = response.getWriter();
 			if(result==false) {
@@ -199,6 +201,20 @@ public class VideoServlet extends HttpServlet {
 				String videoname = JSONValue.toJSONString(this.convertToJson(res));
 				PrintWriter out = response.getWriter();
 				out.println(videoname);
+			}
+			
+		}else if(prodaction!=null && prodaction.equals("searchVideoClassName")) {
+			Collection<VideoVO> res = vs.videoClassList(bean.getVideoClassName());
+			
+			if(res==null) {
+				request.setAttribute("searchMemberId", "can't Find");
+			} else {
+				
+				//轉換contentType必要
+				response.setContentType("text/html; charset=utf-8");
+				String videoclassname = JSONValue.toJSONString(this.convertToJson(res));
+				PrintWriter out = response.getWriter();
+				out.println(videoclassname);
 			}
 			
 		}else  {

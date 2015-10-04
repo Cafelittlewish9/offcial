@@ -95,6 +95,27 @@ public class FollowDAOjdbc implements FollowDAO {
 		}
 		return result;
 	}
+	
+	private static final String SELECT_BY_MEMBERID_AND_FOLLOWID ="SELECT memberId, followId FROM Follow WHERE memberId = ? and followId = ?";
+	
+	public FollowVO selectByMemberIdAndFollowId(int memberId , int followId) {
+		FollowVO bean = null;
+		try (Connection conn=ds.getConnection();
+//				Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+				PreparedStatement stmt = conn.prepareStatement(SELECT_BY_MEMBERID_AND_FOLLOWID);) {
+			stmt.setInt(1, memberId);
+			stmt.setInt(2, followId);
+			ResultSet rset = stmt.executeQuery();
+			while (rset.next()) {
+				bean = new FollowVO();
+				bean.setMemberId(rset.getInt("memberId"));
+				bean.setFollowId(rset.getInt("followId"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return bean;
+	}
 
 	private static final String INSERT = "insert into follow(memberId, followId) values(?, ?)";
 
