@@ -37,8 +37,7 @@
 			</div>
 			<div class="modal-body">
 				<fieldset style="text-align: center">
-<!-- 					<form class="form-horizontal" id="editBlack" role="form" -->
-<%-- 						method="post" action="<c:url value='/Black'/>"> --%>
+
 						<div class="friendslist">
 							<c:forEach var="black" items="${bList}">
 								<div class="friends">
@@ -47,9 +46,11 @@
 								<div style="height: 38px;">
 									<h4 style="display: inline">${black.member.memberAccount}
 											<!-- 								<button id="follow_cancel" type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#">取消追蹤</button> -->
-										</h4>
+									</h4>
+									<form class="form-horizontal" id="editBlack" role="form" method="post" action="<c:url value='/Black'/>">
 									<button type="button" style="float: right" name="operation"
 										value="delete" class="btn btn-danger">取消黑名單</button>
+									</form>
 								</div>
 							</c:forEach>
 						</div>
@@ -57,7 +58,7 @@
 						<!-- 							<button type="submit" class="btn btn-primary" name="sendMemberFollow" value="submit">確認</button> -->
 						<!-- 							<input type="reset" class="btn btn-default" name="sendMemberFollow" value="取消"> -->
 						<!-- 						</div> -->
-					</form>
+					
 				</fieldset>
 			</div>
 		</div>

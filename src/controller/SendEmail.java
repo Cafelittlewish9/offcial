@@ -18,8 +18,8 @@ public class SendEmail {
 	 public static boolean sendemail(String memberAccount,String password1 ,String email) {
 	  String host = "smtp.gmail.com";
 	  int port = 587;
-	  final String username = "zoo123131@gmail.com";
-	  final String password = "loveban19910504";//email password
+	  final String username = "";
+	  final String password = "";//email password
 
 	  Properties props = new Properties();
 	  props.put("mail.smtp.host", host);

@@ -61,8 +61,7 @@ $(function(){
 			</div>
 			<div class="modal-body">
 				<fieldset style="text-align: center">
-					<form class="form-horizontal" 　id="editFollow" role="form"
-						method="post" action="<c:url value='/FollowServlet'/>">
+
 						<div class="friendslist">
 							<c:forEach var="follow" items="${fList}">
 								<div class="friends">
@@ -73,7 +72,9 @@ $(function(){
 									<a href="#"><h4 style="display: inline">${follow.member.memberAccount}
 										<!-- 								<button id="follow_cancel" type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#">取消追蹤</button> -->
 									</h4></a>
+									<form class="form-horizontal" 　id="editFollow" role="form" method="post" action="<c:url value='/FollowServlet'/>">
 									<button id="unfollow" type="button" style="float:right" name="sendMemberFollow" value="delete" class="btn btn-danger">取消追蹤</button>
+									</form>
 								</div>
 							</c:forEach>
 						</div>
@@ -81,7 +82,6 @@ $(function(){
 <!-- 							<button type="submit" class="btn btn-primary" name="sendMemberFollow" value="submit">確認</button> -->
 <!-- 							<input type="reset" class="btn btn-default" name="sendMemberFollow" value="取消"> -->
 <!-- 						</div> -->
-					</form>
 				</fieldset>
 			</div>
 		</div>
