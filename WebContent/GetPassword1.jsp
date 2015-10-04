@@ -51,32 +51,22 @@ width: 450px; margin:0px auto;padding:5px
     
       <div class="modal-header">
 <!--         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> -->
-        <h4 class="modal-title" id="myModalLabel">提取密碼</h4>
+        <h4 class="modal-title" id="myModalLabel"></h4>
       </div>
       
       <div class="modal-body">
 <!-- 		<div class="upload-form"> -->
-			<form id="getpassword" method="post" action="">
+			<form id="getpassword" method="post" action="${pageContext.request.contextPath}/resetPassword" method="post">
 				<fieldset style="text-align:center">
-				
+		
 				<div id="l_input1-2" class="input-group">
-					  <span  class="input-group-addon" id="basic-addon1">帳號</span>
-					  <input id="get_memberAccount" type="text" name="memberAccount" class="form-control" placeholder="請輸入" aria-describedby="basic-addon1">
+					  <span  class="input-group-addon" id="basic-addon1">您已成功申請，請致您的信箱查看</span>
+					  
 				</div>
-				
-				
-				<div id="l_input2-2" class="input-group">
-					  <span  class="input-group-addon" id="basic-addon1">E-mail</span>
-					  <input id="get_memberEmail" type="text" name="memberEmail" class="form-control" maxlength="40" placeholder="請輸入" aria-describedby="basic-addon1">
-				</div>
-				
-				<input value="Select" type="hidden" name="prodaction" class="form-control" aria-describedby="basic-addon1">
-				
+						
 				</fieldset>
 			</form>
-			<div style="width: 450px; margin:0px auto;padding:5px" class="input-group3-1">
-				<input style="width: 440px" id="l_submit3-1"  value="提取密碼" class="btn btn-primary btn-small" type="submit">
-			</div>
+			
 <!-- 		</div> -->
       </div>
 	      	  <div class="modal-footer">

@@ -114,6 +114,9 @@
 										name="photo1" id="photo1" />
 								</div>
 							</div>
+							<div class="form-group">
+								${WrongMsg}
+							</div>
 <!-- 							<input type="hidden" name="operation" value="update"> <input -->
 <!-- 								type="hidden" name="operation" value="reset"> -->
 							<div class="modal-footer" style="text-align: center">

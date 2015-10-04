@@ -58,7 +58,6 @@ public class MemberServlet extends HttpServlet {
 			if(item.getContentType()==null){
 				if (name.equals("memberOldPwd")){
 					memberPassword=value;
-					System.out.println(memberPassword);
 				}else if(name.equals("memberNewPwd")){
 					memberNewPwd=value;
 				}else if(name.equals("memberCheckPwd")){
@@ -82,8 +81,8 @@ public class MemberServlet extends HttpServlet {
 		//判斷是否為會員本人才可修改會員資料←因為會員的其他資料從session來可判斷為確實已登入且為會員
 		//驗證用戶真的有輸入資料
 //		System.out.println(memberPassword+"what");
-		if(memberPassword!=null && memberPassword!="" && !memberPassword.getBytes().equals(member.getMemberPassword())){
-			if (memberNewPwd != "" && memberCheckPwd != "") {
+		if(memberPassword!=null && memberPassword.trim().length()!=0 && !memberPassword.getBytes().equals(member.getMemberPassword())){
+			if (memberNewPwd.trim().length() != 0 && memberCheckPwd.trim().length() != 0) {
 				if (!memberNewPwd.equals(memberCheckPwd)) {
 					errors.add("請再確認一次新密碼");
 				}
@@ -102,7 +101,6 @@ public class MemberServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}	
-		
 		if (updateMemberInfo != null && updateMemberInfo.equals("update")){
 			if (filePart != null) {
 				String header = filePart.getHeader("Content-Disposition");
@@ -123,30 +121,25 @@ public class MemberServlet extends HttpServlet {
 			}
 			if(memberNewPwd!=null && memberNewPwd.trim().length()!=0 && memberCheckPwd.trim().length() != 0 && memberCheckPwd!=null){
 				member.setMemberPassword(memberNewPwd.getBytes());
-				System.out.println(memberNewPwd+"ho"+memberCheckPwd+"ye");
-			}else{
-				byte[] pwd=member.getMemberPassword();
-				System.out.println(pwd+"yo");
 			}
-			if (memberEmail != "" && memberEmail != null) {
+			if (memberEmail.trim().length() !=0 && memberEmail != null) {
 				member.setMemberEmail(memberEmail);				
 			}else{
 				String email=member.getMemberEmail();
 				member.setMemberEmail(email);
 			}
-			if (memberNickname != "" && memberNickname!=null ) {
+			if (memberNickname.trim().length() != 0 && memberNickname!=null ) {
 				member.setMemberNickname(memberNickname);
 			}else{
 				String nickname=member.getMemberNickname();
 				member.setMemberNickname(nickname);
 			}
-			if (memberBirthday != "" && memberBirthday!=null) {
+			if (memberBirthday.trim().length() != 0 && memberBirthday!=null) {
 				member.setMemberBirthday(convertMemberBirthday);
 			}else{
 				java.util.Date birth=member.getMemberBirthday();
 				member.setMemberBirthday(birth);
 			}
-			String broadcastWebsite=member.getBroadcastWebsite();
 			service.update(member);
 		}
 
