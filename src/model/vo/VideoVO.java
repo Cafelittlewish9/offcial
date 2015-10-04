@@ -33,6 +33,7 @@ public class VideoVO {
 	private java.util.Date videoDescriptionModifyTime;
 	@XmlElement(required = true)
 	private MemberVO member;
+	
 
 	@Override
 	public String toString() {
@@ -40,7 +41,7 @@ public class VideoVO {
 		String date = sdf.format(videoUploadTime);
 		return videoId + ": " + videoName + " (" + date + ")";
 	}
-
+	
 	public int getVideoId() {
 		return videoId;
 	}
@@ -136,5 +137,7 @@ public class VideoVO {
 	public void setMember(MemberVO member) {
 		this.member = member;
 	}
+	
+	
 
 }

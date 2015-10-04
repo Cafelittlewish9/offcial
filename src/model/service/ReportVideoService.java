@@ -19,10 +19,10 @@ public class ReportVideoService {
 	public Collection<ReportVideoVO> selectAllList(){
 		return dao.selectAll();
 	}
-	public boolean addReportVideo(int reportedVideoId,java.util.Date reportTime,String reportReason){
+	public boolean addReportVideo(int reportedVideoId,String reportReason){
 		ReportVideoVO bean = new ReportVideoVO();
 		bean.setReportedVideoId(reportedVideoId);
-		bean.setReportTime(reportTime);
+//		bean.setReportTime(reportTime);
 		bean.setReportReason(reportReason);
 		return dao.insert(bean);
 	}
