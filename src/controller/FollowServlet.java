@@ -63,12 +63,10 @@ public class FollowServlet extends HttpServlet {
 		
 		String memberAccount = request.getParameter("memberAccount");
 		String memberPassword = request.getParameter("memberPassword");
-		
 		String sendMemberFollow = request.getParameter("sendMemberFollow");
 		
 		MemberService memberService = new MemberService();
 		MemberVO checkMemberInfo = memberService.login1(memberAccount, memberPassword);
-		
 		Map<String , String> errors = new HashMap<String , String>();
 		request.setAttribute("errors", errors);
 		
