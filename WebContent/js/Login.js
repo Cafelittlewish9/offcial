@@ -152,24 +152,45 @@ $(function () {
         	}
         	return;
     	}else{
-    		 $.get('MemberServlet',$('#getpassword').serialize(),function(data){
-       		   console.log(data);
-       	   		});
+    		console.log($('#getpassword').serialize());
+    		$.ajax({
+    			url:'forgotPwd?' + $('#getpassword').serialize(),
+    			type:'get',
+    			dataType:"json",
+    			success:function(data){
+    				if(data.result==="true"){
+	    				$('#signupfinished h4').text("密碼已寄至信箱");
+	//    	    		//關閉列表 顯示成功畫面
+	    	    		setTimeout(function() {
+	    					$('#mypassword').modal('hide');
+	    	              	$('#signupfinished').modal('show');
+	    	              }, 500);
+	//    	          	//一秒半後關閉成功畫面
+	    	         	 setTimeout(function() {
+	    	              	$('#signupfinished').modal('hide');
+	    	              }, 2000);
+    				}
+    			}
+    			
+    		});
+//    		 $.get('MemberServlet',$('#getpassword').serialize(),function(data){
+//       		   console.log(data);
+//       	   		});
     		 
-    		 $('#signupfinished h4').text("密碼已寄至信箱");
-    		//關閉列表 顯示成功畫面
-    		setTimeout(function() {
-				$('#mypassword').modal('hide');
-              	$('#signupfinished').modal('show');
-              }, 500);
-    		
-          	//一秒半後關閉成功畫面
-         	 setTimeout(function() {
-              	$('#signupfinished').modal('hide');
-              }, 2000);
-         	setTimeout(function() {
-       		 location.reload();
-            }, 3000);
+//    		 $('#signupfinished h4').text("密碼已寄至信箱");
+//    		//關閉列表 顯示成功畫面
+//    		setTimeout(function() {
+//				$('#mypassword').modal('hide');
+//              	$('#signupfinished').modal('show');
+//              }, 500);
+//    		
+//          	//一秒半後關閉成功畫面
+//         	 setTimeout(function() {
+//              	$('#signupfinished').modal('hide');
+//              }, 2000);
+//         	setTimeout(function() {
+//       		 location.reload();
+//            }, 3000);
     	}
     	
     });
