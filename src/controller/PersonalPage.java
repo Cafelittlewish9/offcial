@@ -37,7 +37,7 @@ public class PersonalPage extends HttpServlet {
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("user");
 		int memberId = member.getMemberId();
-//		System.out.println(memberId);
+		System.out.println(memberId);
 		Collection<VideoVO> vList = vService.searchMemberId(memberId);
 		Collection<FollowVO> fList = fService.followList(memberId);
 		Collection<BlackVO> bList=bService.searchBlackAccount(memberId);
@@ -46,7 +46,7 @@ public class PersonalPage extends HttpServlet {
 		request.setAttribute("fList", fList);
 		request.setAttribute("bList",bList);
 		
-		
+		System.out.println("吐");
 		
 		
 		request.getRequestDispatcher("PersonalPage.jsp").forward(request, response);
