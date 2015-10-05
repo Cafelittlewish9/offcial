@@ -68,10 +68,11 @@ $(function(){
 								</div>
 								<div style="height: 38px;">
 									<a href="#"><h4 style="display: inline">${follow.member.memberAccount}
-										<!-- 								<button id="follow_cancel" type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#">取消追蹤</button> -->
+										<!-- <button id="follow_cancel" type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#">取消追蹤</button> -->
 									</h4></a>
-									<form class="form-horizontal" id="editFollow" role="form" method="post" action="<c:url value='/FollowServlet'/>">									<button id="unfollow" type="button" style="float:right" name="sendMemberFollow" value="delete" class="btn btn-danger">取消追蹤</button>
-									</form>
+<%-- 									<form class="form-horizontal" id="editFollow" role="form" method="post" action="<c:url value='/FollowServlet'/>"> --%>
+										<button id="unfollow" type="button" style="float:right" name="sendMemberFollow" value="delete" class="btn btn-danger">取消追蹤</button>
+<!-- 									</form> -->
 								</div>
 							</c:forEach>
 						</div>

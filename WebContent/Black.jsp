@@ -47,10 +47,10 @@
 									<h4 style="display: inline">${black.member.memberAccount}
 											<!-- 								<button id="follow_cancel" type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#">取消追蹤</button> -->
 									</h4>
-									<form class="form-horizontal" id="editBlack" role="form" method="post" action="<c:url value='/Black'/>">
+<%-- 									<form class="form-horizontal" id="editBlack" role="form" method="post" action="<c:url value='/Black'/>"> --%>
 									<button type="button" style="float: right" name="operation"
 										value="delete" class="btn btn-danger">取消黑名單</button>
-									</form>
+<!-- 									</form> -->
 								</div>
 							</c:forEach>
 						</div>
