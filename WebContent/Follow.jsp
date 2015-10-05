@@ -3,7 +3,7 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Setting Button的形狀 -->
-<link rel="stylesheet" href="css/Follow.css">
+<!-- <link rel="stylesheet" href="css/Follow.css"> -->
 <link rel="stylesheet" href="css/PersonalPage.css">
 <!-- </head> -->
 <!-- <body> -->
@@ -47,6 +47,7 @@ $(function(){
   
 });
 </script>
+<script type="text/javascript">var user = '${user.memberAccount}';</script>	
 
 <!-- Modal -->
 <div class="modal fade" id="followModal" tabindex="-1" role="dialog"
@@ -69,8 +70,8 @@ $(function(){
 
 								</div>
 								<div style="height: 38px;">
-									<a href="#"><h4 style="display: inline">${follow.member.memberAccount}
-										<!-- 								<button id="follow_cancel" type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#">取消追蹤</button> -->
+									<a href="/Chat.html"><h4 style="display: inline">${follow.member.memberAccount}
+										<!-- <button id="follow_cancel" type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#">取消追蹤</button> -->
 									</h4></a>
 									<form class="form-horizontal" 　id="editFollow" role="form" method="post" action="<c:url value='/FollowServlet'/>">
 									<button id="unfollow" type="button" style="float:right" name="sendMemberFollow" value="delete" class="btn btn-danger">取消追蹤</button>

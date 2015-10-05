@@ -10,14 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import model.service.BlackService;
 import model.vo.BlackVO;
 import model.vo.MemberVO;
-@WebServlet("/Black")
-public class BlackRServlet extends javax.servlet.http.HttpServlet{
+@WebServlet("/PersonalPage/Black")
+public class BlackServlet extends javax.servlet.http.HttpServlet{
     private static final long serialVersionUID = 2010L;
     private BlackService service = null;
-    
-//    public void setBlackRestful(BlackRestful service){
-//        this.service = service;
-//    }
+
     public void init() throws ServletException{
     	service = new BlackService();
     }
