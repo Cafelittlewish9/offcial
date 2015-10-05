@@ -48,7 +48,7 @@ public class ChatRoomServlet extends javax.servlet.http.HttpServlet {
 		PrintWriter out = response.getWriter();		// 回復拿到字串丟給列印字串
 		response.setContentType("text/xml");		// 使客戶端瀏覽器，區分不同種類的數據
 		response.setHeader("Cache-Control", "no-cache");	// no-cache, 雖然會 cache，但還是會每次都問有沒有新內容，就是三個判斷點的第一個
-		response.setCharacterEncoding("UTF8");
+		response.setCharacterEncoding("UTF-8");
 
 		out.println("<response>");
 		for (int i = 0; i < list.size(); i++) {		// list.size() 傳回 ArrayList 元素個數 (與容量無關)
