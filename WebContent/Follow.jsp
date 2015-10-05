@@ -46,6 +46,7 @@ $(function(){
   
 });
 </script>
+<script type="text/javascript">var user = '${user.memberAccount}';</script>	
 
 <!-- Modal -->
 <div class="modal fade" id="followModal" tabindex="-1" role="dialog"
@@ -67,13 +68,18 @@ $(function(){
 									<img src="${follow.member.memberName}" />
 								</div>
 								<div style="height: 38px;">
+<%-- 									<a href="/Chat.html"><h4 style="display: inline">${follow.member.memberAccount} --%>
 									<a href="#"><h4 style="display: inline">${follow.member.memberAccount}
 										<!-- <button id="follow_cancel" type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#">取消追蹤</button> -->
 									</h4></a>
 <%-- 									<form class="form-horizontal" id="editFollow" role="form" method="post" action="<c:url value='/FollowServlet'/>"> --%>
 										<button id="unfollow" type="button" style="float:right" name="sendMemberFollow" value="delete" class="btn btn-danger">
+<<<<<<< HEAD
 										<a href="/FollowServlet?followId=${follow.followId}&value=delete" style="color:white;text-decoration:none">取消追蹤</a></button>
 										
+=======
+										<a href="${pageContext.request.contextPath}/FollowDeleteServlet?followId=${follow.followId}&operation=delete" style="color:white;text-decoration:none">取消追蹤</a></button>
+>>>>>>> branch 'master' of https://github.com/Cafelittlewish9/offcial.git
 <!-- 									</form> -->
 								</div>
 							</c:forEach>

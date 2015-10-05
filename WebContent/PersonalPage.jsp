@@ -101,7 +101,7 @@
 		                <div class="friendslist"><span>您正追蹤中的會員</span>
 		                <c:forEach var="follow" items="${fList}">
 			                <div class="friends">
-				                <img src="${follow.member.memberName}" />
+				                <img src='${follow.member.memberName}' />
 				            </div >
 				            <div style="height: 38px;"><h4> ${follow.member.memberAccount}</h4></div>
 						</c:forEach>
