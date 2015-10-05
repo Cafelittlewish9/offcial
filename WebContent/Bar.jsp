@@ -55,7 +55,7 @@
 				
 				<br><br><br><br><br><br><br><br><br><br><br>
 				<ul>
-					<a href="#"><span class="glyphicon glyphicon-info-sign" > <span style="font-family:Microsoft JhengHei;">ITV公告</span></span></a>
+					<a href="http://itvvm.cloudapp.net:8080/iTV_Manager/LoginPage.html"><span class="glyphicon glyphicon-info-sign" > <span style="font-family:Microsoft JhengHei;">ITV公告</span></span></a>
 				</ul>	
 		
 <!-- 				<div style="padding:10px 0px 10px 0px"><button type="button" class="btn btn-default">Default button</button></div> -->
