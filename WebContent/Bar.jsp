@@ -46,11 +46,7 @@
 				<ul>
 					<a href="LiveStream.jsp"><span class="glyphicon glyphicon-facetime-video" > <span style="font-family:Microsoft JhengHei;">實況直播</span></span></a>
 				</ul>
-				<c:if test="${!empty user }">
-				<ul>
-					<a href="Cloud.jsp"><span class="glyphicon glyphicon-cloud" > <span style="font-family:Microsoft JhengHei;">雲端硬碟</span></span></a>
-				</ul>	
-				</c:if>
+				
 				<ul>
 					<a href="Forum.jsp"><span class="glyphicon glyphicon-globe" > <span style="font-family:Microsoft JhengHei;">ITV論壇</span></span></a>
 				</ul>

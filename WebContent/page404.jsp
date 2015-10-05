@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -25,12 +28,19 @@
           
           <br>
           
-          <form class="col-lg-12">
-            <div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
-            <input style="font-family:Microsoft JhengHei" class="form-control input-lg" title="TRY IT!!" placeholder="請輸入您想搜尋的內容" type="search">
-              <span style="font-family:Microsoft JhengHei" class="input-group-btn"><input class="btn btn-lg btn-primary" type="button" value="搜尋"></input></span>
-            </div>
-          </form>
+<!--           <form class="col-lg-12" action="SearchPage.jsp" class="search-form"> -->
+<!--           	<div class="input-group" style="width:340px;text-align:center;margin:0 auto;"> -->
+<!--             	<input style="font-family:Microsoft JhengHei"  name="search" id="search" class="form-control input-lg" title="TRY IT!!" placeholder="請輸入您想搜尋的內容" type="search"> -->
+<!--               	<span style="font-family:Microsoft JhengHei" class="input-group-btn"><input class="btn btn-lg btn-primary" type="button" value="搜尋"></input></span> -->
+<!--             </div> -->
+<!--           </form> -->
+ 						<form action="SearchPage.jsp" class="search-form" >
+			                <div class="form-group has-feedback" style="width:340px;text-align:center;margin:0 auto;">
+			            		<label for="search" class="sr-only">Search</label>
+			            			<input style="font-family:Microsoft JhengHei" type="text" class="form-control input-lg" name="search" id="search" placeholder="請輸入您想搜尋的內容"> 
+			            	</div>
+			            </form>
+          
         </div>
         
       </div> <!-- /row -->

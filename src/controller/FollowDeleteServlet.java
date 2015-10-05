@@ -32,6 +32,7 @@ public class FollowDeleteServlet extends javax.servlet.http.HttpServlet{
     }
     public void processRequest(HttpServletRequest request, HttpServletResponse response) 
         throws ServletException, IOException{
+    	System.out.println("ddddd");
         request.setCharacterEncoding("UTF-8");
         String operation = request.getParameter("operation");
 		HttpSession session = request.getSession();
@@ -40,6 +41,7 @@ public class FollowDeleteServlet extends javax.servlet.http.HttpServlet{
     	String followId=request.getParameter("followId");
         int fid=Integer.parseInt(followId);
         if(operation!=null && operation.equals("delete")){
+        	System.out.println("delete");
 			 service.unfollow(fid, memberId);
         }
        

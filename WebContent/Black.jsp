@@ -18,8 +18,34 @@
 
 </center>
 <script type="text/javascript">
-	var memberId = '${user.memberId}';
-	var memberAccount = '${user.memberAccount}';
+$(function(){
+	$.ajax({
+		url:'PersonalPage',
+		type:'post',
+		dataType:"json",
+		success:function(data){
+			$.each(data.black, function(i, v) {
+				$('#friendslistxxx').append("<div class='friends'>" + 
+						"<img src='" + v.member.memberName + "' />" + 
+					"</div>" + 
+					"<div style='height: 38px;'>" + 
+						"<h4 style='display: inline'>" + v.member.memberAccount + "</h4>" + 
+						"<button id='unfollow' type='button' style='float:right' name='sendMemberFollow' value='delete' class='btn btn-danger'>" + 
+						"<a href='Black?blackedId=" + v.blackId + "&operation=delete' style='color:white;text-decoration:none'>取消黑名單</a></button>" + 
+					"</div>");
+			})
+			
+// 			<div class="friends">
+// 			<img src="${black.member.memberName}" />
+// 		</div>
+// 		<div style="height: 38px;">
+// 			<h4 style="display: inline">${black.member.memberAccount}
+// 			</h4>
+// 			<button type="button" style="float: right" name="operation" value="delete" class="btn btn-danger"><a href="${pageContext.request.contextPath}/Black?blackedId=${black.blackedId}&operation=delete" style="color:white;text-decoration:none">取消黑名單</a></button>
+// 		</div>
+		}
+	});
+});
 </script>
 
 
@@ -38,21 +64,18 @@
 			<div class="modal-body">
 				<fieldset style="text-align: center">
 
-						<div class="friendslist">
-							<c:forEach var="black" items="${bList}">
-								<div class="friends">
-									<img src="${black.member.memberName}" />
-								</div>
-								<div style="height: 38px;">
-									<h4 style="display: inline">${black.member.memberAccount}
-											<!-- 								<button id="follow_cancel" type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#">取消追蹤</button> -->
-									</h4>
-<%-- 									<form class="form-horizontal" id="editBlack" role="form" method="post" action="<c:url value='/Black'/>"> --%>
-									<button type="button" style="float: right" name="operation"
-										value="delete" class="btn btn-danger"><a href="${pageContext.request.contextPath}/Black?blackedId=${black.blackedId}&operation=delete" style="color:white;text-decoration:none">取消黑名單</a></button>
-<!-- 									</form> -->
-								</div>
-							</c:forEach>
+						<div id="friendslistxxx" class="friendslist">
+<%-- 							<c:forEach var="black" items="${bList}"> --%>
+<!-- 								<div class="friends"> -->
+<%-- 									<img src="${black.member.memberName}" /> --%>
+<!-- 								</div> -->
+<!-- 								<div style="height: 38px;"> -->
+<%-- 									<h4 style="display: inline">${black.member.memberAccount} --%>
+<!-- 									</h4> -->
+<!-- 									<button type="button" style="float: right" name="operation" -->
+<%-- 										value="delete" class="btn btn-danger"><a href="${pageContext.request.contextPath}/Black?blackedId=${black.blackedId}&operation=delete" style="color:white;text-decoration:none">取消黑名單</a></button> --%>
+<!-- 								</div> -->
+<%-- 							</c:forEach> --%>
 						</div>
 						<!-- 						<div class="modal-footer" style="text-align: center"> -->
 						<!-- 							<button type="submit" class="btn btn-primary" name="sendMemberFollow" value="submit">確認</button> -->

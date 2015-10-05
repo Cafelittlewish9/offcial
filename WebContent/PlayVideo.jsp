@@ -61,7 +61,6 @@ $(function(){
 		dataType:"json",
 		success:function(data){
 			$.each(data,function(i,v){
-				console.log("AAAA"+v.videoId);
 				$('#pic').prepend('<img src="'+v.memberName+'" style="width: 50px; height: 50px" />');
 			})
 		}

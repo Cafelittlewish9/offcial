@@ -22,15 +22,13 @@ import model.vo.VideoVO;
 
 @WebServlet("/PersonalPage")
 public class PersonalPage extends HttpServlet {
-	private VideoService vService;
 	private FollowService fService;
 	private BlackService bService;
 
 	@Override
 	public void init() throws ServletException {
-		this.vService = new VideoService();
 		this.fService = new FollowService();
-		this.bService=new BlackService();
+		this.bService = new BlackService();
 	}
 
 	@Override
@@ -38,29 +36,38 @@ public class PersonalPage extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("user");
-		int memberId = member.getMemberId();
-		System.out.println(memberId);
-		Collection<VideoVO> vList = vService.searchMemberId(memberId);
-//		System.out.println(memberId);
-		Collection<FollowVO> fList = fService.followList(memberId);
-		Collection<BlackVO> bList=bService.searchBlackAccount(memberId);
-		
-		request.setAttribute("vList", vList);
-		request.setAttribute("fList", fList);
-		request.setAttribute("bList",bList);
-		
-		
-		
-//		JSONObject obj = new JSONObject();
-//		obj.put("follow", fList);
-//		response.getWriter().write(obj.toString());
-		request.getRequestDispatcher("PersonalPage.jsp").forward(request, response);
+		if (member != null) {
+			int memberId = member.getMemberId();
+			System.out.println(memberId);
+			// Collection<VideoVO> vList = vService.searchMemberId(memberId);
+			// System.out.println(memberId);
+			Collection<FollowVO> fList = fService.followList(memberId);
+			// request.setAttribute("vList", vList);
+			// request.setAttribute("fList", fList);
+			// request.setAttribute("bList",bList);
+
+			JSONObject obj = new JSONObject();
+			obj.put("follow", fList);
+//			System.out.println(obj);
+			response.getWriter().write(obj.toString());
+		}
+		// request.getRequestDispatcher("PersonalPage.jsp").forward(request,
+		// response);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		this.doGet(request, response);
+		HttpSession session = request.getSession();
+		MemberVO member = (MemberVO) session.getAttribute("user");
+		if (member != null) {
+			int memberId = member.getMemberId();
+			Collection<BlackVO> bList = bService.searchBlackAccount(memberId);
+			JSONObject obj = new JSONObject();
+			obj.put("black", bList);
+			System.out.println(obj);
+			response.getWriter().write(obj.toString());
+		}
 	}
 
 }

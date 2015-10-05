@@ -105,7 +105,7 @@ $(function(){
 									<li>
 <!-- 									<a href="PersonalPage.jsp" style="width: 169px;height: 34px;text-align: center;line-height: 34px;">個人頁面</a>										 -->
 									<button type="button" class="btn btn-primary btn-me" id="PersonalPage" data-toggle="modal" data-target="#PersonalPage" style="display: block;">
-									<a href="PersonalPage" style="text-decoration: none">
+									<a href="PersonalPage.jsp" style="text-decoration: none">
 									個人頁面</a>
 									</button>
 									</li>

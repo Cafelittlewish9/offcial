@@ -20,30 +20,28 @@
 
 <script  type="text/javascript">
 $(function(){
-	$('#unfollow').click(function(){						  
-			
 	$.ajax({
-		url:'FollowServlet',
+		url:'PersonalPage',
 		type:'get',
-		data:{
-			  'memberId':memberId,
-			  'sendMemberFollow':'select',
-			  'sendMemberFollow':'check',
-	  		  'sendMemberFollow':'delete'},
+// 		data:{
+// 			  'memberId':memberId,
+// 			  'sendMemberFollow':'select',
+// 			  'sendMemberFollow':'check',
+// 	  		  'sendMemberFollow':'delete'},
 		dataType:"json",
 		success:function(data){
-			
-			console.log("delete : "+data);
-			setTimeout(function() {
-	 			  location.reload();
-	 			  }, 1000);
-			
+			$.each(data.follow, function(i, v) {
+				$('#friendslistooo').append("<div class='friends'>" + 
+						"<img src='" + v.member.memberName + "' />" + 
+					"</div>" + 
+					"<div style='height: 38px;'>" + 
+						"<a href='#'><h4 style='display: inline'>" + v.member.memberAccount + "</h4></a>" + 
+						"<button id='unfollow' type='button' style='float:right' name='sendMemberFollow' value='delete' class='btn btn-danger'>" + 
+						"<a href='FollowDeleteServlet?followId=" + v.followId + "&operation=delete' style='color:white;text-decoration:none'>取消追蹤</a></button>" + 
+					"</div>");
+			})
 		}
-													  
 	});
-	
-  })
-  
 });
 </script>
 <script type="text/javascript">var user = '${user.memberAccount}';</script>	
@@ -62,27 +60,18 @@ $(function(){
 			<div class="modal-body">
 				<fieldset style="text-align: center">
 
-						<div class="friendslist">
-							<c:forEach var="follow" items="${fList}">
-								<div class="friends">
-									<img src="${follow.member.memberName}" />
-								</div>
-								<div style="height: 38px;">
-<%-- 									<a href="/Chat.html"><h4 style="display: inline">${follow.member.memberAccount} --%>
-									<a href="#"><h4 style="display: inline">${follow.member.memberAccount}
-										<!-- <button id="follow_cancel" type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#">取消追蹤</button> -->
-									</h4></a>
-<%-- 									<form class="form-horizontal" id="editFollow" role="form" method="post" action="<c:url value='/FollowServlet'/>"> --%>
-										<button id="unfollow" type="button" style="float:right" name="sendMemberFollow" value="delete" class="btn btn-danger">
-<<<<<<< HEAD
-										<a href="/FollowServlet?followId=${follow.followId}&value=delete" style="color:white;text-decoration:none">取消追蹤</a></button>
-										
-=======
-										<a href="${pageContext.request.contextPath}/FollowDeleteServlet?followId=${follow.followId}&operation=delete" style="color:white;text-decoration:none">取消追蹤</a></button>
->>>>>>> branch 'master' of https://github.com/Cafelittlewish9/offcial.git
-<!-- 									</form> -->
-								</div>
-							</c:forEach>
+						<div id="friendslistooo" class="friendslist">
+<%-- 							<c:forEach var="follow" items="${fList}"> --%>
+<!-- 								<div class="friends"> -->
+<%-- 									<img src="${follow.member.memberName}" /> --%>
+<!-- 								</div> -->
+<!-- 								<div style="height: 38px;"> -->
+<%-- 									<a href="#"><h4 style="display: inline">${follow.member.memberAccount} --%>
+<!-- 									</h4></a> -->
+<!-- 										<button id="unfollow" type="button" style="float:right" name="sendMemberFollow" value="delete" class="btn btn-danger"> -->
+<%-- 										<a href="${pageContext.request.contextPath}/FollowDeleteServlet?followId=${follow.followId}&operation=delete" style="color:white;text-decoration:none">取消追蹤</a></button> --%>
+<!-- 								</div> -->
+<%-- 							</c:forEach> --%>
 						</div>
 <!-- 						<div class="modal-footer" style="text-align: center"> -->
 <!-- 							<button type="submit" class="btn btn-primary" name="sendMemberFollow" value="submit">確認</button> -->
