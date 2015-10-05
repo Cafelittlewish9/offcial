@@ -18,8 +18,8 @@ public class SendEmail {
 	 public static boolean sendemail(String memberAccount,String password1 ,String email) {
 	  String host = "smtp.gmail.com";
 	  int port = 587;
-	  final String username = "";
-	  final String password = "";//email password
+	  final String username = "pl575566@gmail.com";
+	  final String password = "kp780130";//email password
 
 	  Properties props = new Properties();
 	  props.put("mail.smtp.host", host);
@@ -35,7 +35,7 @@ public class SendEmail {
 
 	  try {
 		  MimeMessage  message = new MimeMessage(session); 
-		  message.setFrom(new InternetAddress("zoo123131@gmail.com","ITV"));
+		  message.setFrom(new InternetAddress("pl575566@gmail.com","ITV"));
 		  message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));  
 		  message.setSubject("找回帳號密碼","UTF-8");   
 		  Multipart mp = new MimeMultipart();
@@ -52,7 +52,7 @@ public class SendEmail {
 		  message.setContent(mp);
 		  Transport.send(message);
 	   
-//		  System.out.println("寄送email結束.");
+		  System.out.println("寄送email結束.");
 		  return true;
 	  	} catch (Exception e) {
 	  		return false;

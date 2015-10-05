@@ -49,7 +49,7 @@
 									</h4>
 <%-- 									<form class="form-horizontal" id="editBlack" role="form" method="post" action="<c:url value='/Black'/>"> --%>
 									<button type="button" style="float: right" name="operation"
-										value="delete" class="btn btn-danger">取消黑名單</button>
+										value="delete" class="btn btn-danger"><a href="${pageContext.request.contextPath}/Black?blackedId=${black.blackedId}&operation=delete" style="color:white;text-decoration:none">取消黑名單</a></button>
 <!-- 									</form> -->
 								</div>
 							</c:forEach>
