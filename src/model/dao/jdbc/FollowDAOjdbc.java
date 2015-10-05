@@ -32,7 +32,7 @@ public class FollowDAOjdbc implements FollowDAO {
 		}
 	}
 
-	private static final String SELECT_BY_MEMBERID = "SELECT f.memberId, followId, memberAccount "
+	private static final String SELECT_BY_MEMBERID = "SELECT f.memberId, followId, memberAccount, memberName "
 			+ "FROM Follow f join Member m ON followId = m.memberId WHERE f.memberId = ?";
 
 	@Override
@@ -51,6 +51,7 @@ public class FollowDAOjdbc implements FollowDAO {
 				follow.setFollowId(rset.getInt("followId"));
 				MemberVO bean = new MemberVO();
 				bean.setMemberAccount(rset.getString("memberAccount"));
+				bean.setMemberName(rset.getString("memberName"));
 				follow.setMember(bean);
 				list.add(follow);
 			}

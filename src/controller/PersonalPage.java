@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
+
 import model.service.BlackService;
 import model.service.FollowService;
 import model.service.VideoService;
@@ -37,8 +39,9 @@ public class PersonalPage extends HttpServlet {
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("user");
 		int memberId = member.getMemberId();
-//		System.out.println(memberId);
+		System.out.println(memberId);
 		Collection<VideoVO> vList = vService.searchMemberId(memberId);
+//		System.out.println(memberId);
 		Collection<FollowVO> fList = fService.followList(memberId);
 		Collection<BlackVO> bList=bService.searchBlackAccount(memberId);
 		
@@ -48,7 +51,9 @@ public class PersonalPage extends HttpServlet {
 		
 		
 		
-		
+//		JSONObject obj = new JSONObject();
+//		obj.put("follow", fList);
+//		response.getWriter().write(obj.toString());
 		request.getRequestDispatcher("PersonalPage.jsp").forward(request, response);
 	}
 

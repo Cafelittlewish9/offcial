@@ -66,7 +66,7 @@ public class BlackDAOjdbc implements BlackDAO {
 	}
 
 	//SELECT更改過了
-	private static final String GET_LIST="SELECT b.memberId, b.blackedId,m.memberAccount FROM black b JOIN member m"
+	private static final String GET_LIST="SELECT b.memberId, b.blackedId,m.memberAccount,m.memberName FROM black b JOIN member m"
 	+" ON b.blackedid = m.memberid WHERE b.memberId=?";
 	
 	/**
@@ -89,6 +89,7 @@ public class BlackDAOjdbc implements BlackDAO {
 				blackMem.setBlackedId(rs.getInt("blackedId"));
 				blackMem.setMemberId(rs.getInt("memberId"));
 				bean.setMemberAccount(rs.getString("memberAccount"));
+				bean.setMemberName(rs.getString("memberName"));
 				blackMem.setMember(bean);
 				blacks.add(blackMem);
 			}
