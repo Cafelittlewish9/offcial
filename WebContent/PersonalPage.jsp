@@ -98,13 +98,13 @@
 		            
 		              <div class="placeholder-for-chat no-chat">
 		              
-		                <div class="friendslist"><span>您正追蹤中的會員</span>
-		                <c:forEach var="follow" items="${fList}">
-			                <div class="friends">
-				                <img src='${follow.member.memberName}' />
-				            </div >
-				            <div style="height: 38px;"><h4> ${follow.member.memberAccount}</h4></div>
-						</c:forEach>
+		                <div id="friendslistttt" class="friendslist"><span>您正追蹤中的會員</span>
+<%-- 		                <c:forEach var="follow" items="${fList}"> --%>
+<!-- 			                <div class="friends"> -->
+<%-- 				                <img src='${follow.member.memberName}' /> --%>
+<!-- 				            </div > -->
+<%-- 				            <div style="height: 38px;"><h4> ${follow.member.memberAccount}</h4></div> --%>
+<%-- 						</c:forEach> --%>
 <!-- 						     <div class="friends" > -->
 <!-- 				                <img src="img/photo.png" /> -->
 <!-- 				            </div > -->

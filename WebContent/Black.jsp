@@ -31,7 +31,7 @@ $(function(){
 					"<div style='height: 38px;'>" + 
 						"<h4 style='display: inline'>" + v.member.memberAccount + "</h4>" + 
 						"<button id='unfollow' type='button' style='float:right' name='sendMemberFollow' value='delete' class='btn btn-danger'>" + 
-						"<a href='Black?blackedId=" + v.blackId + "&operation=delete' style='color:white;text-decoration:none'>取消黑名單</a></button>" + 
+						"<a href='Black?blackedId=" + v.blackedId + "&operation=delete' style='color:white;text-decoration:none'>取消黑名單</a></button>" + 
 					"</div>");
 			})
 			

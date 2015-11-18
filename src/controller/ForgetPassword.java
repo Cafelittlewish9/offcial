@@ -39,12 +39,14 @@ public class ForgetPassword extends HttpServlet {
 	    
 	    
 	    String replace = Math.random() * 100 + "";
-	    String newPassword = ServicePasswordChange.getMD5Endocing(replace);
+	    String newPassword = ServicePasswordChange.getMD5Endocing(replace).substring(0, 8);
 	    byte[] temp = newPassword.getBytes();
-	    
+//	    byte[] temp = "G56fd4".getBytes();
 	    boolean result = false;
 	    if(bean!=null){
-	    	result = SendEmail.sendemail(memberAccount,"xxxx", email);
+	    	result = SendEmail.sendemail(memberAccount,newPassword, email);
+	    	bean.setMemberPassword(temp);
+	    	service.update(bean);
 	    } else {
 	    	errorMessage.put("wrong", "使用者帳號信箱錯誤");
 	    }

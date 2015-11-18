@@ -65,7 +65,7 @@ public class PersonalPage extends HttpServlet {
 			Collection<BlackVO> bList = bService.searchBlackAccount(memberId);
 			JSONObject obj = new JSONObject();
 			obj.put("black", bList);
-			System.out.println(obj);
+//			System.out.println(obj);
 			response.getWriter().write(obj.toString());
 		}
 	}

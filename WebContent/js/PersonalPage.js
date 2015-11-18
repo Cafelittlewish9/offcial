@@ -134,6 +134,21 @@ $(function(){
 				})
 	});
 	
+	$.ajax({
+		url:'PersonalPage',
+		type:'get',
+		dataType:"JSON",
+		success:function(data){
+			console.log(data.follow);
+			$.each(data.follow, function(i, v) {
+				$('#friendslistttt').append("<div class='friends'>" + 
+										 	"<img src='" + v.member.memberName + "' />" + 
+										 "</div >" + 
+										 "<div style='height: 38px;'><h4>" + v.member.memberAccount + "</h4></div>");
+			})
+		}
+	});
+	
 //	回最上層
 	$("#gotop").click(function(){
         jQuery("html,body").animate({
